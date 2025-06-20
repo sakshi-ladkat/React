@@ -145,4 +145,54 @@ function getBook(id) {
 
 //Destructuring
 
-const books = getBooks();
+const book = getBook(2);
+
+//const title = book.title;
+//const author = book.author;
+const { title, author, pages, publicationDate, genres, hasMovieAdaptation } =
+  book;
+book;
+console.log(author, title, genres);
+
+//const primaryGenres = genres[0];
+//const secondaryGenres = genres[1];
+const [primaryGenres, secondaryGenres, ...otherGeneres] = genres;
+console.log(primaryGenres, secondaryGenres, otherGeneres);
+
+const newGenres = [...genres, "epic fantasy"];
+newGenres;
+
+const updatedbook = {
+  ...book,
+  //Adding a new property
+  moviePublicationbook: "2001-12-19",
+  //Overwriting an existing property
+  // pages: 1210,
+};
+updatedbook;
+
+//function getYear(str) {
+//return str.split("-")[0];
+//}
+
+//Arrow Function
+const getYear = (str) => str.split("-")[0];
+console.log(getYear(publicationDate));
+
+const summary = `${title} , a ${pages} - page long book , was written by ${author} 
+and published in ${getYear(publicationDate)},The book has ${
+  hasMovieAdaptation ? "" : "not"
+} been adapted as a movie`;
+summary;
+
+const pagesRange = pages > 1000 ? "Over a thousand" : "less than 1000";
+pagesRange;
+console.log(`The book has ${pagesRange} pages`);
+
+console.log(true && "Some string");
+console.log(false && "Some string");
+console.log(hasMovieAdaptation && "This book has a movie");
+
+//falsy : 0 , '' , null , undefined
+console.log("jonson" && "Some string");
+console.log(0 && "Some string");
